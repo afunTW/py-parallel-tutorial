@@ -1,5 +1,11 @@
 """
 Securely accessing shared variable in different thread
+
+threading.Lock() only have two method:
+    using acquire() to lock the state and
+    using release() to unlock the state
+
+if you call release() in unlock state, it raise RunTimeError
 """
 import threading
 
