@@ -10,15 +10,15 @@ shared_variable = 0
 def add_one():
     global shared_variable
     lock.acquire()
-    print('Current thread: {}'.format(threading.current_thread()))
     shared_variable += 1
+    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread))
     lock.release()
 
 def add_two():
     global shared_variable
     lock.acquire()
-    print('Current thread: {}'.format(threading.current_thread()))
     shared_variable += 2
+    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread))
     lock.release()
 
 threads = []
@@ -30,4 +30,4 @@ for func in [add_one, add_two]:
 for thread in threads:
     thread.join()
 
-print('shared_variable={}'.format(shared_variable))
+print('final shared_variable={}'.format(shared_variable))
