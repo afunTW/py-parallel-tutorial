@@ -6,6 +6,10 @@ threading.Lock() only have two method:
     using release() to unlock the state
 
 if you call release() in unlock state, it raise RunTimeError
+
+在不同的 thread 之間透過 Lock 的實作可以安全的存取同一個變數
+實作內容僅僅只是透過 acquire 上鎖, release 解鎖
+以此保證目前只有當前的 thread 可以操作
 """
 import threading
 
@@ -36,4 +40,4 @@ for func in [add_one, add_two]:
 for thread in threads:
     thread.join()
 
-print('final shared_variable={}'.format(shared_variable))
+print('final shared_variable = {}'.format(shared_variable))
