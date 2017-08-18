@@ -12,7 +12,6 @@ e.g. recursion
 """
 import threading
 
-
 lock = threading.Lock()
 rlock = threading.RLock()
 shared_variable = 0

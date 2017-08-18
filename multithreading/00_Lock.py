@@ -13,7 +13,6 @@ if you call release() in unlock state, it raise RunTimeError
 """
 import threading
 
-
 lock = threading.Lock()
 shared_variable = 0
 
