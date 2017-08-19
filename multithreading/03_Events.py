@@ -17,12 +17,12 @@ event = threading.Event()
 
 def waiter(event, nloops):
     for i in range(nloops):
-        print('Thread {}: Waiting for flag to be set - {} iteration'.format(threading.current_thread, i+1))
+        print('Thread {}: Waiting for flag to be set - {} iteration'.format(threading.current_thread(), i+1))
 
         # block until flag become true
         event.wait()
 
-        print('Thread {}: Wait complete - {}'.format(threading.current_thread, time.ctime()))
+        print('Thread {}: Wait complete - {}'.format(threading.current_thread(), time.ctime()))
         event.clear()
         print()
 
@@ -30,7 +30,7 @@ def setter(event, nloops):
     for i in range(nloops):
         sleep_time = random.randrange(2, 5)
         time.sleep(sleep_time)
-        print('Thread {}: sleep {} sec - {}'.format(threading.current_thread , sleep_time, time.ctime()))
+        print('Thread {}: sleep {} sec - {}'.format(threading.current_thread() , sleep_time, time.ctime()))
         event.set()
 
 threads = []

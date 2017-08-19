@@ -23,12 +23,12 @@ def block_issue():
     global shared_variable
     lock.acquire()
     shared_variable += 1
-    print('shared_variable = {} in thread {} with Lock'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {} with Lock'.format(shared_variable, threading.current_thread()))
 
     # blocked
     lock.acquire()
     shared_variable += 2
-    print('shared_variable = {} in thread {} with Lock'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {} with Lock'.format(shared_variable, threading.current_thread()))
 
     lock.release()
 
@@ -40,20 +40,20 @@ def block_solution():
     global shared_variable
     rlock.acquire()
     shared_variable += 3
-    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread()))
 
     # this won't block
     rlock.acquire()
     shared_variable += 4
-    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread()))
 
     # release last locked rlock
     rlock.release()
-    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {} with RLock'.format(shared_variable, threading.current_thread()))
 
     # release first locked rlock
     rlock.release()
-    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread()))
 
 
 # block_issue()

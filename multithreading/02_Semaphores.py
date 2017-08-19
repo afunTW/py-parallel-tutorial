@@ -32,9 +32,9 @@ def producer(nloops):
         try:
             # counter + 1
             container.release()
-            print('Producer {}: Produced items'.format(threading.current_thread))
+            print('Producer {}: Produced items'.format(threading.current_thread()))
         except ValueError as e:
-            print('Producer {}: Full of items, skipping'.format(threading.current_thread))
+            print('Producer {}: Full of items, skipping'.format(threading.current_thread()))
 
 def consumer(nloops):
     print('consumer have {} loops'.format(nloops))
@@ -45,9 +45,9 @@ def consumer(nloops):
         # disable the blocking behavior by passing block flag
         # counter -1
         if container.acquire(False):
-            print('Consumer {}: Consumed items'.format(threading.current_thread))
+            print('Consumer {}: Consumed items'.format(threading.current_thread()))
         else:
-            print('Consumer{}: Empty, skipping'.format(threading.current_thread))
+            print('Consumer {}: Empty, skipping'.format(threading.current_thread()))
 
 threads = []
 nloops = random.randrange(3, 6)

@@ -19,7 +19,7 @@ def producer(container, nitems):
     for i in range(nitems):
         sleep_time = random.randrange(2, 5)
         time.sleep(sleep_time)
-        # print('Thread {} - Producer sleep {}'.format(threading.current_thread, sleep_time))
+        # print('Thread {} - Producer sleep {}'.format(threading.current_thread(), sleep_time))
 
         # safely do things by lock the state
         condition.acquire()
@@ -27,8 +27,8 @@ def producer(container, nitems):
         # put the item into container for consumption
         num = random.randint(1, 10)
         container.append(num)
-        print('Thread {} - Producer produced: {}'.format(threading.current_thread, num))
-        print('Thread {} - Producer Container: {}'.format(threading.current_thread, container))
+        print('Thread {} - Producer produced: {}'.format(threading.current_thread(), num))
+        print('Thread {} - Producer Container: {}'.format(threading.current_thread(), container))
 
         # notisfies the consumer about the availability
         condition.notify()
@@ -43,8 +43,8 @@ def consumer(container, nitems):
 
         # block until an item is avaliable for consumption
         condition.wait()
-        print('Thread {} - Consumer acquire {} at {}'.format(threading.current_thread, container.pop(), time.ctime()))
-        print('Thread {} - Consumer Container: {}'.format(threading.current_thread, container))
+        print('Thread {} - Consumer acquire {} at {}'.format(threading.current_thread(), container.pop(), time.ctime()))
+        print('Thread {} - Consumer Container: {}'.format(threading.current_thread(), container))
 
         condition.release()
 

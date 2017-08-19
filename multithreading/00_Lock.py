@@ -20,14 +20,14 @@ def add_one():
     global shared_variable
     lock.acquire()
     shared_variable += 1
-    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread()))
     lock.release()
 
 def add_two():
     global shared_variable
     lock.acquire()
     shared_variable += 2
-    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread))
+    print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread()))
     lock.release()
 
 threads = []
