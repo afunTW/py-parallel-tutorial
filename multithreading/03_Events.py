@@ -46,4 +46,5 @@ threads[-1].start()
 for thread in threads:
     thread.join()
 
+print('Thread {} - After thread.join()'.format(threading.current_thread()))
 print('All done')

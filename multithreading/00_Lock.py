@@ -39,4 +39,6 @@ for func in [add_one, add_two]:
 for thread in threads:
     thread.join()
 
+print()
+print('Thread {} - After thread.join()'.format(threading.current_thread()))
 print('final shared_variable = {}'.format(shared_variable))

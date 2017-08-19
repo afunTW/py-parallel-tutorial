@@ -60,3 +60,6 @@ def block_solution():
 # print('shared_variable = {} after lock issue'.format(shared_variable))
 block_solution()
 print('shared_variable = {} after rlock condition'.format(shared_variable))
+
+print()
+print('Thread {} - After thread.join()'.format(threading.current_thread()))

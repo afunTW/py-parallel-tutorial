@@ -50,7 +50,7 @@ def consumer(container, nitems):
 
 threads = []
 nloops = random.randrange(3, 6)
-print('loops {}'.format(nloops))
+print('loops {} times'.format(nloops))
 
 for func in [producer, consumer]:
     threads.append(threading.Thread(target=func, args=(container, nloops)))
@@ -60,4 +60,6 @@ for thread in threads:
     # wait for the threads to complete before moving on with the main script
     thread.join()
 
+print()
+print('Thread {} - After thread.join()'.format(threading.current_thread()))
 print('All done')
