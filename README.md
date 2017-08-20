@@ -8,8 +8,11 @@ Demo code to figure out some threading object designed concept
 
 ### Some point of view for using multithreading
 
-- multithreading within the process share the same data space with main thread
-- less memory overhead than processes
+- Multithreading within the process share the same data space with main thread
+- Less memory overhead than processes
+- There's two different kind of thread
+  - kernel thread: part of operating system
+  - user thread: not implement in kernel
 
 ## Reference
 
