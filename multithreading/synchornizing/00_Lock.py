@@ -12,6 +12,7 @@ if you call release() in unlock state, it raise RunTimeError
 以此保證目前只有當前的 thread 可以操作
 """
 import threading
+import time
 
 lock = threading.Lock()
 shared_variable = 0
@@ -21,6 +22,9 @@ def add_one():
     lock.acquire()
     shared_variable += 1
     print('shared_variable = {} in thread {}'.format(shared_variable, threading.current_thread()))
+    print('- {} sleep 1 sec'.format(add_one.__name__))
+    time.sleep(1)
+    print('- {} awake'.format(add_one.__name__))
     lock.release()
 
 def add_two():
@@ -32,6 +36,7 @@ def add_two():
 
 threads = []
 for func in [add_one, add_two]:
+    print('Ready to running {}'.format(func))
     threads.append(threading.Thread(target=func))
     threads[-1].start()
 
